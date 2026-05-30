@@ -8,15 +8,13 @@ import {
   ExternalLink,
   Filter,
   Footprints,
-  Gauge,
   Languages,
   Search,
-  ShieldCheck,
   Sparkles,
   Target,
-  Video,
 } from 'lucide-react';
 import './styles.css';
+import topicsData from '../content/topics.json';
 import videoResourcesData from '../content/videos.json';
 
 type Lang = 'en' | 'zh';
@@ -38,6 +36,18 @@ type VideoResource = {
   tags: Bilingual[];
 };
 
+type Topic = {
+  id: string;
+  category: Category;
+  name: Bilingual;
+  aliases: Bilingual[];
+  level: Level;
+  priority: number;
+  youtubeQuery: string;
+  description: Bilingual;
+  qualitySignals: Bilingual[];
+};
+
 const label = {
   en: {
     langName: 'English',
@@ -45,7 +55,7 @@ const label = {
     brand: 'Badminton Knowledge Base',
     navFinder: 'Video Finder',
     navMediator: 'Mediator',
-    navModel: 'Content Model',
+    navTopics: 'Topic Taxonomy',
     eyebrow: 'Curated YouTube links · shot library · footwork knowledge',
     heroTitle: 'A bilingual badminton knowledge base for finding the right learning video faster.',
     heroLead:
@@ -78,17 +88,11 @@ const label = {
       'Best links are approved, tagged, and published to the knowledge base.',
     ],
     knowledgeArchitecture: 'Knowledge architecture',
-    contentModelTitle: 'Initial bilingual content model',
+    contentModelTitle: 'Initial bilingual topic taxonomy',
     nextSteps: 'Next build steps',
     roadmapTitle: 'Move from seed links to a curated bilingual knowledge base.',
     roadmapBody:
       'The initial version uses static seed data. The next milestone should add structured bilingual content files, richer topic pages, and an offline mediator workflow for importing AI search candidates.',
-    modelCards: [
-      ['Video Resource', 'URL, title, channel, topic type, level, tags, language, and quality status.'],
-      ['Technique Topic', 'Shot or footwork type, English/Chinese aliases, related topics, and what a good video should show.'],
-      ['Quality Rubric', 'Camera clarity, technical accuracy, safety, level fit, explanation quality, and practical examples.'],
-      ['Mediator Decision', 'Approved, candidate, rejected, replacement reason, review notes, and publication timestamp.'],
-    ],
     roadmapItems: [
       'Create bilingual topic taxonomy: shots, footwork, tactics, physical preparation',
       'Store video links in JSON or Markdown frontmatter with en/zh fields',
@@ -103,7 +107,7 @@ const label = {
     brand: '羽毛球知识库',
     navFinder: '视频查找',
     navMediator: '内容审核',
-    navModel: '内容模型',
+    navTopics: '主题分类',
     eyebrow: '精选 YouTube 链接 · 击球知识 · 步法知识',
     heroTitle: '一个双语羽毛球知识库，帮助你更快找到合适的学习视频。',
     heroLead:
@@ -136,17 +140,11 @@ const label = {
       '最佳链接被批准、打标签，并发布到知识库。',
     ],
     knowledgeArchitecture: '知识架构',
-    contentModelTitle: '初始双语内容模型',
+    contentModelTitle: '初始双语主题分类',
     nextSteps: '下一步建设',
     roadmapTitle: '从种子链接发展成精选双语知识库。',
     roadmapBody:
       '当前初版使用静态种子数据。下一个里程碑应增加结构化双语内容文件、更完整的主题页，以及导入 AI 搜索候选结果的离线 mediator 流程。',
-    modelCards: [
-      ['视频资源', 'URL、标题、频道、主题类型、水平、标签、语言和质量状态。'],
-      ['技术主题', '击球或步法类型、中英文别名、相关主题，以及好视频应该展示的要点。'],
-      ['质量标准', '镜头清晰度、技术准确性、安全性、水平匹配、讲解质量和实用示例。'],
-      ['Mediator 决策', '已批准、候选、已拒绝、替代原因、审核备注和发布时间。'],
-    ],
     roadmapItems: [
       '建立双语主题分类：击球、步法、战术、身体准备',
       '用 JSON 或 Markdown frontmatter 保存视频链接，并包含 en/zh 字段',
@@ -176,6 +174,7 @@ const qualityLabel: Record<Quality, Bilingual> = {
   'Needs Review': { en: 'Needs Review', zh: '待审核' },
 };
 
+const topics = topicsData as Topic[];
 const videoResources = videoResourcesData as VideoResource[];
 
 const categories: Array<'All' | Category> = ['All', 'Shot', 'Footwork', 'Tactics', 'Fitness'];
@@ -281,7 +280,7 @@ function App() {
           <div className="navLinks">
             <a href="#finder">{t.navFinder}</a>
             <a href="#mediator">{t.navMediator}</a>
-            <a href="#model">{t.navModel}</a>
+            <a href="#topics">{t.navTopics}</a>
             <button className="languageButton" onClick={() => setLang(lang === 'en' ? 'zh' : 'en')}>
               <Languages size={16} /> {t.switchTo}
             </button>
@@ -311,7 +310,7 @@ function App() {
             </div>
             <div className="heroStats">
               <div><strong>{videoResources.length}</strong><span>{t.seedLinks}</span></div>
-              <div><strong>4</strong><span>{t.contentAreas}</span></div>
+              <div><strong>{topics.length}</strong><span>{t.contentAreas}</span></div>
               <div><strong>AI</strong><span>{t.aiAssisted}</span></div>
             </div>
           </aside>
@@ -419,19 +418,29 @@ function App() {
         </div>
       </section>
 
-      <section className="section knowledge" id="model">
+      <section className="section knowledge" id="topics">
         <div className="sectionHeader">
           <div>
             <p className="sectionLabel">{t.knowledgeArchitecture}</p>
             <h2>{t.contentModelTitle}</h2>
           </div>
         </div>
-        <div className="pillarGrid">
-          {[Video, Target, Gauge, ShieldCheck].map((Icon, index) => (
-            <article className="pillarCard" key={t.modelCards[index][0]}>
-              <Icon size={28} />
-              <h3>{t.modelCards[index][0]}</h3>
-              <p>{t.modelCards[index][1]}</p>
+        <div className="topicGrid">
+          {topics.map((topic) => (
+            <article className="topicCard" key={topic.id}>
+              <div className="cardTop">
+                <span className={`level ${topic.level.toLowerCase()}`}>{levelLabel[topic.level][lang]}</span>
+                <span className="quality candidate">P{topic.priority}</span>
+              </div>
+              <div className="resourceType">
+                {topic.category === 'Footwork' ? <Footprints size={18} /> : <Target size={18} />}
+                {categoryLabel[topic.category][lang]}
+              </div>
+              <h3>{text(topic.name, lang)}</h3>
+              <p>{text(topic.description, lang)}</p>
+              <ul>
+                {topic.qualitySignals.slice(0, 2).map((signal) => <li key={`${topic.id}-${signal.en}`}>{text(signal, lang)}</li>)}
+              </ul>
             </article>
           ))}
         </div>

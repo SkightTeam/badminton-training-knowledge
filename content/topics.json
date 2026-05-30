@@ -1,0 +1,310 @@
+[
+  {
+    "id": "shot.forehand-clear",
+    "category": "Shot",
+    "name": { "en": "Forehand clear", "zh": "正手高远球" },
+    "aliases": [
+      { "en": "forehand high clear", "zh": "正手高球" },
+      { "en": "overhead clear", "zh": "头顶高远球" }
+    ],
+    "level": "Beginner",
+    "priority": 1,
+    "youtubeQuery": "badminton forehand clear technique contact point",
+    "description": {
+      "en": "Basic rear-court overhead shot for sending the shuttle high and deep.",
+      "zh": "后场头顶基础击球，用于把球打高打远。"
+    },
+    "qualitySignals": [
+      { "en": "shows preparation and contact point", "zh": "展示引拍和击球点" },
+      { "en": "explains recovery after stroke", "zh": "解释击球后的回位" }
+    ]
+  },
+  {
+    "id": "shot.forehand-drop",
+    "category": "Shot",
+    "name": { "en": "Forehand drop", "zh": "正手吊球" },
+    "aliases": [
+      { "en": "forehand drop shot", "zh": "正手网前吊球" },
+      { "en": "overhead forehand drop", "zh": "头顶正手吊球" },
+      { "en": "fast drop", "zh": "快吊" },
+      { "en": "slow drop", "zh": "慢吊" }
+    ],
+    "level": "Intermediate",
+    "priority": 1,
+    "youtubeQuery": "badminton forehand drop shot technique fast drop slow drop",
+    "description": {
+      "en": "Forehand overhead drop variations, including fast drop and slow drop.",
+      "zh": "正手头顶吊球变化，包括快吊和慢吊。"
+    },
+    "qualitySignals": [
+      { "en": "distinguishes fast drop from slow drop", "zh": "区分快吊和慢吊" },
+      { "en": "shows contact disguise from clear or smash preparation", "zh": "展示与高远球或杀球相似的击球准备" }
+    ]
+  },
+  {
+    "id": "shot.backhand-drop",
+    "category": "Shot",
+    "name": { "en": "Backhand drop", "zh": "反手吊球" },
+    "aliases": [
+      { "en": "backhand drop shot", "zh": "反手网前吊球" },
+      { "en": "overhead backhand drop", "zh": "头顶反手吊球" }
+    ],
+    "level": "Advanced",
+    "priority": 2,
+    "youtubeQuery": "badminton backhand drop shot technique recovery",
+    "description": {
+      "en": "Backhand rear-court drop used when the shuttle is behind the body or on the non-racket side.",
+      "zh": "在来球偏身后或非持拍侧时使用的反手后场吊球。"
+    },
+    "qualitySignals": [
+      { "en": "shows safe shoulder and elbow mechanics", "zh": "展示安全的肩肘动作" },
+      { "en": "explains when not to force a backhand", "zh": "说明何时不应强行反手" }
+    ]
+  },
+  {
+    "id": "shot.smash",
+    "category": "Shot",
+    "name": { "en": "Smash", "zh": "杀球" },
+    "aliases": [
+      { "en": "forehand smash", "zh": "正手杀球" },
+      { "en": "jump smash", "zh": "跳杀" },
+      { "en": "stick smash", "zh": "点杀" }
+    ],
+    "level": "Intermediate",
+    "priority": 1,
+    "youtubeQuery": "badminton smash body rotation pronation technique",
+    "description": {
+      "en": "Attacking overhead shot using rotation, timing, and pronation to create steep pace.",
+      "zh": "进攻性头顶击球，通过转体、时机和内旋产生速度与下压角度。"
+    },
+    "qualitySignals": [
+      { "en": "explains power chain rather than only arm swing", "zh": "解释动力链而不只是挥手臂" },
+      { "en": "includes recovery and follow-up position", "zh": "包含回位和下一拍位置" }
+    ]
+  },
+  {
+    "id": "shot.net-shot",
+    "category": "Shot",
+    "name": { "en": "Net shot", "zh": "网前球" },
+    "aliases": [
+      { "en": "spinning net shot", "zh": "搓球" },
+      { "en": "tumbling net shot", "zh": "滚网球" },
+      { "en": "net play", "zh": "网前技术" }
+    ],
+    "level": "Beginner",
+    "priority": 1,
+    "youtubeQuery": "badminton net shot spinning tumbling technique",
+    "description": {
+      "en": "Front-court touch shot used to keep the shuttle tight to the net.",
+      "zh": "前场手感型击球，用于让球贴网下落。"
+    },
+    "qualitySignals": [
+      { "en": "shows racket face angle and shuttle contact", "zh": "展示拍面角度和触球点" },
+      { "en": "distinguishes push, net, and lift choices", "zh": "区分推球、网前球和挑球选择" }
+    ]
+  },
+  {
+    "id": "shot.lift",
+    "category": "Shot",
+    "name": { "en": "Lift", "zh": "挑球" },
+    "aliases": [
+      { "en": "defensive lift", "zh": "防守挑球" },
+      { "en": "attacking lift", "zh": "进攻挑球" },
+      { "en": "clear from net", "zh": "网前挑后场" }
+    ],
+    "level": "Beginner",
+    "priority": 1,
+    "youtubeQuery": "badminton lift technique defensive attacking lift",
+    "description": {
+      "en": "Front-court reply that sends the shuttle high or fast toward the rear court.",
+      "zh": "网前回球方式，把球挑高或快速挑向后场。"
+    },
+    "qualitySignals": [
+      { "en": "shows underhand contact and follow-through", "zh": "展示下手击球和随挥" },
+      { "en": "explains defensive vs attacking lift", "zh": "解释防守挑球与进攻挑球差异" }
+    ]
+  },
+  {
+    "id": "shot.drive",
+    "category": "Shot",
+    "name": { "en": "Drive", "zh": "平抽挡" },
+    "aliases": [
+      { "en": "flat drive", "zh": "平抽" },
+      { "en": "drive defense", "zh": "抽挡防守" },
+      { "en": "mid-court drive", "zh": "中场平抽" }
+    ],
+    "level": "Intermediate",
+    "priority": 2,
+    "youtubeQuery": "badminton drive technique flat exchange grip change",
+    "description": {
+      "en": "Fast flat shot used in mid-court exchanges and doubles pressure situations.",
+      "zh": "中场快速平线击球，常用于双打平抽对抗和压迫。"
+    },
+    "qualitySignals": [
+      { "en": "shows grip change and compact swing", "zh": "展示握拍转换和小幅度挥拍" },
+      { "en": "uses controlled examples instead of only rally highlights", "zh": "使用可控示范而不只是对抽集锦" }
+    ]
+  },
+  {
+    "id": "footwork.split-step",
+    "category": "Footwork",
+    "name": { "en": "Split step", "zh": "启动步" },
+    "aliases": [
+      { "en": "ready step", "zh": "预启动" },
+      { "en": "preload step", "zh": "预动" }
+    ],
+    "level": "Beginner",
+    "priority": 1,
+    "youtubeQuery": "badminton split step timing footwork",
+    "description": {
+      "en": "Preparation movement timed around the opponent's contact to start efficiently.",
+      "zh": "围绕对手击球瞬间完成的预备移动，用于高效启动。"
+    },
+    "qualitySignals": [
+      { "en": "shows timing relative to opponent contact", "zh": "展示与对手击球瞬间的时机关系" },
+      { "en": "uses real shot examples", "zh": "使用真实来球示例" }
+    ]
+  },
+  {
+    "id": "footwork.lunge",
+    "category": "Footwork",
+    "name": { "en": "Lunge", "zh": "弓步" },
+    "aliases": [
+      { "en": "front court lunge", "zh": "前场弓步" },
+      { "en": "net lunge", "zh": "网前弓步" }
+    ],
+    "level": "Beginner",
+    "priority": 1,
+    "youtubeQuery": "badminton front court lunge mechanics footwork",
+    "description": {
+      "en": "Front-court reaching step for net shots, lifts, and defensive retrievals.",
+      "zh": "前场跨步，用于网前球、挑球和被动救球。"
+    },
+    "qualitySignals": [
+      { "en": "shows knee alignment and safe landing", "zh": "展示膝盖对齐和安全落地" },
+      { "en": "explains push-back recovery", "zh": "解释蹬回回位" }
+    ]
+  },
+  {
+    "id": "footwork.scissor-kick",
+    "category": "Footwork",
+    "name": { "en": "Scissor kick", "zh": "剪刀步" },
+    "aliases": [
+      { "en": "rear court scissor", "zh": "后场剪刀步" },
+      { "en": "China jump", "zh": "蹬转步" },
+      { "en": "scissor jump", "zh": "剪刀跳" }
+    ],
+    "level": "Intermediate",
+    "priority": 1,
+    "youtubeQuery": "badminton scissor kick rear court recovery",
+    "description": {
+      "en": "Rear-court rotation footwork that supports overhead shots and recovery.",
+      "zh": "后场转体步法，用于支撑头顶击球和回位。"
+    },
+    "qualitySignals": [
+      { "en": "shows hip rotation and landing balance", "zh": "展示髋部转动和落地平衡" },
+      { "en": "connects the shot to recovery", "zh": "把击球和回位连接起来" }
+    ]
+  },
+  {
+    "id": "footwork.chasse-step",
+    "category": "Footwork",
+    "name": { "en": "Chasse step", "zh": "并步" },
+    "aliases": [
+      { "en": "side chasse", "zh": "横向并步" },
+      { "en": "shuffle step", "zh": "滑步" },
+      { "en": "side step", "zh": "侧向移动" }
+    ],
+    "level": "Beginner",
+    "priority": 2,
+    "youtubeQuery": "badminton chasse step side movement footwork",
+    "description": {
+      "en": "Connector step for side movement, recovery, and short-distance court coverage.",
+      "zh": "用于横向移动、回位和短距离覆盖的衔接步法。"
+    },
+    "qualitySignals": [
+      { "en": "shows rhythm and spacing between feet", "zh": "展示节奏和两脚间距" },
+      { "en": "connects chasse to split step and lunge", "zh": "连接并步、启动步和弓步" }
+    ]
+  },
+  {
+    "id": "footwork.cross-step",
+    "category": "Footwork",
+    "name": { "en": "Cross step", "zh": "交叉步" },
+    "aliases": [
+      { "en": "crossover step", "zh": "交叉移动" },
+      { "en": "rear court cross step", "zh": "后场交叉步" }
+    ],
+    "level": "Intermediate",
+    "priority": 2,
+    "youtubeQuery": "badminton cross step crossover footwork rear court",
+    "description": {
+      "en": "Longer-distance movement pattern for rear-court and diagonal coverage.",
+      "zh": "用于后场和斜线覆盖的较长距离移动模式。"
+    },
+    "qualitySignals": [
+      { "en": "explains when to cross step and when not to", "zh": "解释何时该交叉步、何时不该交叉步" },
+      { "en": "shows recovery after the final step", "zh": "展示最后一步后的回位" }
+    ]
+  },
+  {
+    "id": "tactics.serve-return",
+    "category": "Tactics",
+    "name": { "en": "Serve return", "zh": "接发球" },
+    "aliases": [
+      { "en": "return of serve", "zh": "接发" },
+      { "en": "serve return tactics", "zh": "接发球战术" }
+    ],
+    "level": "Intermediate",
+    "priority": 1,
+    "youtubeQuery": "badminton doubles serve return patterns",
+    "description": {
+      "en": "Choices after receiving serve, especially in doubles: push, lift, net, drive, and third-shot setup.",
+      "zh": "接发后的选择，尤其是双打中的推、挑、放网、平抽和第三拍衔接。"
+    },
+    "qualitySignals": [
+      { "en": "shows decision options, not only one fixed pattern", "zh": "展示多种决策选择，而不是单一套路" },
+      { "en": "connects return choice to third shot", "zh": "把接发选择和第三拍连接起来" }
+    ]
+  },
+  {
+    "id": "tactics.singles-base-position",
+    "category": "Tactics",
+    "name": { "en": "Singles base position", "zh": "单打中心位置" },
+    "aliases": [
+      { "en": "recovery base", "zh": "回位中心" },
+      { "en": "singles recovery position", "zh": "单打回位位置" }
+    ],
+    "level": "Beginner",
+    "priority": 2,
+    "youtubeQuery": "badminton singles base position recovery tactics",
+    "description": {
+      "en": "Where to recover after different shots in singles to cover likely replies.",
+      "zh": "单打中不同击球后应回到哪里，以覆盖对手可能的回球。"
+    },
+    "qualitySignals": [
+      { "en": "links base position to previous shot quality", "zh": "把中心位置和上一拍质量联系起来" },
+      { "en": "uses court diagrams or rally examples", "zh": "使用场地图或回合示例" }
+    ]
+  },
+  {
+    "id": "fitness.shoulder-warmup",
+    "category": "Fitness",
+    "name": { "en": "Shoulder warm-up", "zh": "肩部热身" },
+    "aliases": [
+      { "en": "rotator cuff warm up", "zh": "肩袖热身" },
+      { "en": "overhead shoulder preparation", "zh": "头顶击球肩部准备" }
+    ],
+    "level": "Beginner",
+    "priority": 2,
+    "youtubeQuery": "badminton shoulder warm up rotator cuff overhead preparation",
+    "description": {
+      "en": "Pre-play shoulder preparation for overhead shots and injury risk reduction.",
+      "zh": "上场前的肩部准备，用于头顶击球和降低受伤风险。"
+    },
+    "qualitySignals": [
+      { "en": "safe, low-load warm-up sequence", "zh": "安全、低负荷的热身顺序" },
+      { "en": "avoids medical overclaiming", "zh": "避免医学夸大承诺" }
+    ]
+  }
+]

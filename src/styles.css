@@ -300,7 +300,7 @@ main {
 }
 
 .resourceCard,
-.pillarCard,
+.topicCard,
 .workflowCard,
 .queueItem {
   border: 1px solid #dfe8da;
@@ -355,7 +355,7 @@ main {
 }
 
 .resourceCard h3,
-.pillarCard h3,
+.topicCard h3,
 .workflowCard h3,
 .queueItem h3 {
   margin: 10px 0 0;
@@ -365,13 +365,14 @@ main {
 }
 
 .resourceCard p,
-.pillarCard p,
+.topicCard p,
 .workflowCard li,
 .queueItem li {
   font-size: 0.98rem;
 }
 
 .resourceCard ul,
+.topicCard ul,
 .queueItem ul {
   display: flex;
   flex-wrap: wrap;
@@ -382,6 +383,7 @@ main {
 }
 
 .resourceCard li,
+.topicCard li,
 .queueItem li {
   padding: 7px 10px;
   border-radius: 999px;
@@ -419,8 +421,7 @@ main {
   padding: 24px;
 }
 
-.workflowCard svg,
-.pillarCard svg {
+.workflowCard svg {
   color: #1d8d65;
   margin-bottom: 16px;
 }
@@ -448,14 +449,14 @@ main {
   padding-top: 38px;
 }
 
-.pillarGrid {
+.topicGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 18px;
 }
 
-.pillarCard {
-  padding: 24px;
+.topicCard {
+  padding: 22px;
 }
 
 .roadmap {
@@ -506,7 +507,7 @@ main {
     grid-template-columns: 1fr;
   }
 
-  .pillarGrid {
+  .topicGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -535,7 +536,7 @@ main {
     margin-top: 64px;
   }
 
-  .pillarGrid,
+  .topicGrid,
   .heroStats {
     grid-template-columns: 1fr;
   }

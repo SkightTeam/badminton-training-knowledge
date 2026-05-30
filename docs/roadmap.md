@@ -12,8 +12,9 @@
 
 ## Phase 2: Structured content
 
-- Move video resources to JSON or Markdown frontmatter
-- Add topic taxonomy for shots, footwork, tactics, and fitness
+- Maintain canonical topic taxonomy in `content/topics.json`
+- Maintain visible video/search resources in `content/videos.json`
+- Expand both files toward 50-100 searchable topics/resources
 - Add direct YouTube video URLs after mediator approval
 - Add bilingual topic labels
 - Add quality rubric pages

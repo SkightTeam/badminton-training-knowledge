@@ -24,11 +24,18 @@ Recommended file convention for long-form pages:
 
 Keep the source URL and media metadata shared, but allow language-specific titles, summaries, tags, and mediator notes.
 
+## Structured content files
+
+- `content/topics.json`: canonical bilingual topic taxonomy with id, category, aliases, priority, YouTube query, description, and quality signals.
+- `content/videos.json`: visible seed video/search resources used by the end-user finder.
+
+The topic taxonomy can grow ahead of the visible video library. This lets mediator work start from a stable list of concepts before every concept has an approved direct video URL.
+
 ## Seed taxonomy status
 
 The current site is a seed taxonomy, not a complete library. The first coverage target is to make common searches return at least one useful candidate card before mediator review produces final direct video links.
 
-Initial seed coverage should include:
+Initial seed coverage includes:
 
 - Forehand clear / 正手高远球
 - Forehand drop / 正手吊球
@@ -45,6 +52,8 @@ Initial seed coverage should include:
 - Chasse step / 并步
 - Cross step / 交叉步
 - Serve return / 接发球
+- Singles base position / 单打中心位置
+- Shoulder warm-up / 肩部热身
 
 Search should use aliases in both languages. For example, `Forehand drop`, `forehand drop shot`, `正手吊球`, `快吊`, and `慢吊` should find the forehand drop card.
 

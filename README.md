@@ -26,11 +26,26 @@ Current bilingual fields include:
 - Mediator queue examples
 - Content model and roadmap text
 
-Long-term content should move from inline TypeScript seed data to structured files with explicit `en` and `zh` fields.
+Current structured content files:
+
+- `content/topics.json`: bilingual topic taxonomy, aliases, priority, YouTube search query, descriptions, and quality signals.
+- `content/videos.json`: current seed video/search resources shown in the finder.
+
+Long-term content should continue to use structured files with explicit `en` and `zh` fields.
 
 ## Current content coverage
 
-The site currently contains a seed taxonomy, not a complete badminton knowledge base. The seed library now covers the most common starter areas:
+- Topic taxonomy: 15 bilingual topics across shots, footwork, tactics, and fitness
+- Video/search resources: 15 seed entries shown in the finder
+
+Topic coverage:
+
+- Shots: forehand clear, forehand drop, backhand drop, smash, net shot, lift, drive
+- Footwork: split step, scissor kick, lunge, chasse step, cross step
+- Tactics: doubles serve return, singles base position
+- Fitness: shoulder warm-up
+
+The visible video library now covers the most common starter areas:
 
 - Shots: forehand clear, forehand drop, backhand drop, drop shot overview, smash, backhand clear, net shot, lift, drive
 - Footwork: split step, scissor kick, lunge, chasse step, cross step
@@ -92,9 +107,8 @@ This repo is configured to publish the static site with GitHub Pages from GitHub
 
 ## Recommended next milestones
 
-1. Expand `content/videos.json` from seed coverage toward 50-100 searchable topics.
-2. Add a proper bilingual topic taxonomy for shots, footwork, tactics, and fitness.
-3. Add mediator review fields: approved, rejected, reason, quality score, reviewed date.
+1. Expand `content/topics.json` and `content/videos.json` toward 50-100 searchable topics/resources.
+2. Add mediator review fields: approved, rejected, reason, quality score, reviewed date.
 4. Add AI search import format for candidate queues.
 5. Replace YouTube search URLs with selected direct video URLs after mediator approval.
 6. Add stable URLs for English and Chinese pages if SEO becomes important.
