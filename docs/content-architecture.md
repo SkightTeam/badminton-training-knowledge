@@ -1,12 +1,12 @@
 # Content Architecture
 
-The website should become a practical badminton learning system, not just a blog.
+The website should become a practical badminton learning system for players, not just a blog.
 
 ## Core content types
 
 ### Lesson
 
-A focused teaching unit.
+A focused learning unit.
 
 Fields:
 
@@ -17,7 +17,7 @@ Fields:
 - learning goal
 - prerequisites
 - explanation
-- coaching cues
+- self-check cues
 - common errors
 - correction drills
 - video notes
@@ -42,7 +42,7 @@ Fields:
 
 ### Training Plan
 
-A session or multi-week progression.
+A session or multi-week progression for individual players or practice partners.
 
 Fields:
 
@@ -90,7 +90,6 @@ Fields:
 - Training Plans
 - Tactics
 - Fitness
-- Coaching
 - Glossary
 - Video Notes
 

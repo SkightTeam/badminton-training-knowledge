@@ -16,20 +16,20 @@
 - Search and filters
 - Tags by level, skill, court area, and game type
 
-## Phase 3: Coaching tools
+## Phase 3: Player tools
 
-- Session planner
+- Personal session planner
 - Printable drill cards
-- Weekly training plan generator template
-- Assessment checklists
-- Video-analysis note pages
+- Weekly training plan template
+- Self-assessment checklists
+- Video self-analysis note pages
 
-## Phase 4: Media and community
+## Phase 4: Media and learning resources
 
 - Embedded video examples
-- Coach notes
+- Player notes
 - Downloadable PDFs
-- Club/team curriculum packs
+- Skill progression packs
 - Contribution guide
 
 ## Phase 5: Advanced platform
@@ -38,4 +38,4 @@
 - Saved learning paths
 - Progress tracking
 - Quiz/checkpoint system
-- Coach dashboard
+- Personal training dashboard

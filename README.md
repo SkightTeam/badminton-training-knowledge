@@ -1,14 +1,14 @@
 # Badminton Training Knowledge
 
-A badminton training material and knowledge website for players, coaches, and clubs.
+A badminton training material and knowledge website for badminton players.
 
-This project is independent from the Vertical Agent Workbench project. It is a content-first website scaffold for organizing badminton technique, footwork, tactics, physical preparation, session plans, and video-analysis resources.
+This project is independent from the Vertical Agent Workbench project. It is a content-first website scaffold for organizing badminton technique, footwork, tactics, physical preparation, self-practice plans, and video-analysis resources.
 
 ## Goals
 
 - Build a structured badminton training knowledge base
 - Provide clear learning paths for beginner, intermediate, and advanced players
-- Support coaches with reusable session plans and drill progressions
+- Support self-study with reusable training plans and drill progressions
 - Create a foundation for bilingual content, video notes, and searchable lessons
 
 ## Initial content structure
@@ -19,7 +19,7 @@ This project is independent from the Vertical Agent Workbench project. It is a c
   - Net control and front court
   - Singles tactical patterns
   - Doubles rotation and roles
-  - Coach session planner
+  - Solo practice and tracking
 - Knowledge pillars
   - Technique library
   - Physical preparation
@@ -28,8 +28,8 @@ This project is independent from the Vertical Agent Workbench project. It is a c
 - Sample content roadmap
   - Split-step timing
   - Rear-court scissor kick
-  - Doubles serve-return session design
-  - Video analysis checklist
+  - Doubles serve-return practice
+  - Video self-analysis checklist
   - Beginner 12-week progression
 
 ## Tech stack
@@ -64,7 +64,7 @@ npm run preview
 2. Add bilingual English/Chinese article pages.
 3. Add search/filter for modules and lessons.
 4. Add drill cards with goal, setup, cues, progressions, regressions, and common errors.
-5. Add video analysis note templates.
+5. Add video self-analysis note templates.
 6. Add deployment workflow for GitHub Pages, Cloudflare Pages, or Vercel.
 
 ## License

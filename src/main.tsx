@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { ArrowRight, BookOpen, CalendarDays, Dumbbell, GraduationCap, HeartPulse, PlayCircle, Search, ShieldCheck, Target, Users } from 'lucide-react';
+import { ArrowRight, BookOpen, CalendarDays, Dumbbell, GraduationCap, HeartPulse, PlayCircle, Search, ShieldCheck, Target, UserRound } from 'lucide-react';
 import './styles.css';
 
 type TrainingModule = {
   title: string;
-  level: 'Beginner' | 'Intermediate' | 'Advanced' | 'Coach';
+  level: 'Beginner' | 'Intermediate' | 'Advanced';
   duration: string;
   description: string;
   skills: string[];
@@ -48,11 +48,11 @@ const modules: TrainingModule[] = [
     skills: ['Serve return', 'Rotation', 'Defense', 'Third shot'],
   },
   {
-    title: 'Coach Session Planner',
-    level: 'Coach',
+    title: 'Solo Practice and Tracking',
+    level: 'Beginner',
     duration: 'Reusable',
-    description: 'Plan progressive sessions with warm-up, skill block, constraints games, conditioning, feedback, and homework.',
-    skills: ['Session design', 'Assessment', 'Feedback', 'Load control'],
+    description: 'Create repeatable self-practice routines with clear goals, measurable reps, recovery notes, and weekly progress checks.',
+    skills: ['Self-assessment', 'Repetition goals', 'Consistency logs', 'Recovery habits'],
   },
 ];
 
@@ -60,7 +60,7 @@ const knowledgeAreas = [
   {
     icon: Target,
     title: 'Technique Library',
-    copy: 'Stroke mechanics, grips, body positions, contact points, common errors, and corrective cues.',
+    copy: 'Stroke mechanics, grips, body positions, contact points, common errors, and self-correction cues.',
   },
   {
     icon: Dumbbell,
@@ -82,8 +82,8 @@ const knowledgeAreas = [
 const sampleLessons = [
   'How to time the split step against different opponents',
   'Rear-court scissor kick: when to rotate and when to block jump',
-  'Designing a 90-minute doubles serve-return session',
-  'Video analysis checklist for overhead preparation',
+  'Solo and partner drills for doubles serve-return practice',
+  'Video self-analysis checklist for overhead preparation',
   'Beginner 12-week progression from rallying to first tournament',
 ];
 
@@ -105,11 +105,11 @@ function App() {
 
         <div className="heroGrid">
           <div className="heroCopy">
-            <p className="eyebrow">Training material · skill library · coaching knowledge base</p>
-            <h1>Build a structured badminton learning website for players and coaches.</h1>
+            <p className="eyebrow">Training material · skill library · player knowledge base</p>
+            <h1>Build a structured badminton learning website for players.</h1>
             <p className="lead">
               A clean starting point for organizing badminton technique, footwork, tactics,
-              physical preparation, session plans, and video-analysis resources.
+              physical preparation, self-practice routines, and video-analysis resources.
             </p>
             <div className="heroActions">
               <a className="primaryButton" href="#modules">
@@ -139,12 +139,12 @@ function App() {
       <section className="section intro">
         <div>
           <p className="sectionLabel">Project concept</p>
-          <h2>From scattered drills to a searchable training system.</h2>
+          <h2>From scattered drills to a searchable player training system.</h2>
         </div>
         <p>
           This project is intentionally separate from the agent-workbench repository. It is a
-          public-facing knowledge website concept for badminton education, with room to grow into
-          bilingual articles, drill cards, coaching plans, video notes, and structured learning paths.
+          public-facing knowledge website concept for badminton players, with room to grow into
+          bilingual articles, drill cards, self-practice plans, video notes, and structured learning paths.
         </p>
       </section>
 
@@ -200,7 +200,7 @@ function App() {
           <h2>Turn the site into a practical badminton reference.</h2>
           <p>
             The first milestone should create evergreen training pages and a repeatable lesson format:
-            goal, prerequisites, coaching cues, drill setup, progressions, common errors, and video notes.
+            goal, prerequisites, self-check cues, drill setup, progressions, common errors, and video notes.
           </p>
         </div>
         <div className="lessonList">
@@ -221,14 +221,14 @@ function App() {
           <p>Designed around reusable lessons, drills, glossary entries, and structured pathways.</p>
         </article>
         <article>
-          <Users size={26} />
-          <h3>Player and coach friendly</h3>
-          <p>Works for self-study, club training, coach session planning, and junior programs.</p>
+          <UserRound size={26} />
+          <h3>Player-first</h3>
+          <p>Built for self-study, personal training plans, match reflection, and steady skill progression.</p>
         </article>
         <article>
           <ShieldCheck size={26} />
           <h3>Evidence-aware</h3>
-          <p>Can later include citations, video examples, coach notes, and versioned updates.</p>
+          <p>Can later include citations, video examples, player notes, and versioned updates.</p>
         </article>
       </section>
     </main>
