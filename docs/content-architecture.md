@@ -1,8 +1,28 @@
 # Content Architecture
 
-The website should become a practical badminton knowledge base for discovering and curating high-quality learning videos.
+The website should become a practical bilingual badminton knowledge base for discovering and curating high-quality learning videos.
 
 It is not a training portal. It does not manage player schedules, workouts, progress, or coaching workflows.
+
+## Bilingual content rule
+
+Every user-facing content object should support English and Chinese.
+
+Recommended data shape for short text:
+
+```json
+{
+  "en": "Split step",
+  "zh": "启动步"
+}
+```
+
+Recommended file convention for long-form pages:
+
+- English: `slug.md`
+- Chinese: `slug.zh.md`
+
+Keep the source URL and media metadata shared, but allow language-specific titles, summaries, tags, and mediator notes.
 
 ## Core content types
 
@@ -12,19 +32,19 @@ A reviewed or candidate YouTube resource.
 
 Fields:
 
-- title
+- title: `{ en, zh }`
 - url
 - source platform
 - channel name
 - language
 - duration
 - category: shot, footwork, tactics, fitness
-- topic type: clear, smash, split step, lunge, etc.
+- topic type: `{ en, zh }`, such as clear / 高远球, smash / 杀球, split step / 启动步
 - level: beginner, intermediate, advanced
-- tags
+- tags: array of `{ en, zh }`
 - quality status: approved, candidate, needs review, rejected
 - quality score
-- mediator notes
+- mediator notes: `{ en, zh }`
 - last reviewed date
 
 ### Technique Topic
@@ -33,15 +53,15 @@ A searchable badminton concept.
 
 Fields:
 
-- title
+- title: `{ en, zh }`
 - slug
 - category
-- aliases
-- description
+- aliases: `{ en, zh }`
+- description: `{ en, zh }`
 - related topics
-- common search queries
-- what a good video should show
-- common misleading signs
+- common search queries in English and Chinese
+- what a good video should show: `{ en, zh }`
+- common misleading signs: `{ en, zh }`
 
 ### AI Search Candidate
 
@@ -53,10 +73,10 @@ Fields:
 - candidate title
 - candidate URL
 - channel
-- extracted summary
-- AI reason for inclusion
+- extracted summary: `{ en, zh }` when available
+- AI reason for inclusion: `{ en, zh }`
 - risk flags
-- suggested tags
+- suggested tags: array of `{ en, zh }`
 - duplicate match
 - mediator decision
 
@@ -83,9 +103,9 @@ Fields:
 
 - reviewer
 - decision: approve, reject, replace, defer
-- reason
+- reason: `{ en, zh }`
 - preferred alternative URL
-- notes
+- notes: `{ en, zh }`
 - timestamp
 
 ## Proposed top-level navigation
@@ -100,9 +120,11 @@ Fields:
 
 ## Bilingual direction
 
-Recommended convention:
+Required convention:
 
-- English: `slug.md` or topic label
-- Chinese: `slug.zh.md` or topic label
+- English short fields: `en`
+- Chinese short fields: `zh`
+- English long-form pages: `slug.md`
+- Chinese long-form pages: `slug.zh.md`
 
 Keep media assets and YouTube URLs language-neutral where possible, but allow per-language recommendations when the best videos differ.

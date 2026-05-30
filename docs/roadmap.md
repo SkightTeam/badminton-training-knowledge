@@ -1,10 +1,11 @@
 # Roadmap
 
-## Phase 1: Static public knowledge base
+## Phase 1: Static public bilingual knowledge base
 
-- Landing page
+- Landing page with English / 中文 toggle
 - Searchable seed video library
 - Filters by category and quality status
+- Bilingual labels for topic, tag, level, quality status, and mediator notes
 - Initial mediator workflow mockup
 - GitHub Pages deployment
 
