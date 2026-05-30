@@ -92,7 +92,7 @@ This repo is configured to publish the static site with GitHub Pages from GitHub
 
 ## Recommended next milestones
 
-1. Move video seed data from `src/main.tsx` into `content/videos.json`.
+1. Expand `content/videos.json` from seed coverage toward 50-100 searchable topics.
 2. Add a proper bilingual topic taxonomy for shots, footwork, tactics, and fitness.
 3. Add mediator review fields: approved, rejected, reason, quality score, reviewed date.
 4. Add AI search import format for candidate queues.
