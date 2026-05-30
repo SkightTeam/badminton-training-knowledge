@@ -24,6 +24,30 @@ Recommended file convention for long-form pages:
 
 Keep the source URL and media metadata shared, but allow language-specific titles, summaries, tags, and mediator notes.
 
+## Seed taxonomy status
+
+The current site is a seed taxonomy, not a complete library. The first coverage target is to make common searches return at least one useful candidate card before mediator review produces final direct video links.
+
+Initial seed coverage should include:
+
+- Forehand clear / 正手高远球
+- Forehand drop / 正手吊球
+- Backhand drop / 反手吊球
+- Drop shot overview / 吊球总览
+- Smash / 杀球
+- Backhand clear / 反手高远球
+- Net shot / 网前球
+- Lift / 挑球
+- Drive / 平抽挡
+- Split step / 启动步
+- Scissor kick / 剪刀步
+- Lunge / 弓步
+- Chasse step / 并步
+- Cross step / 交叉步
+- Serve return / 接发球
+
+Search should use aliases in both languages. For example, `Forehand drop`, `forehand drop shot`, `正手吊球`, `快吊`, and `慢吊` should find the forehand drop card.
+
 ## Core content types
 
 ### Video Resource

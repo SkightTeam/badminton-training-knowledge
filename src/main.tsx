@@ -28,6 +28,7 @@ type VideoResource = {
   title: Bilingual;
   category: Category;
   type: Bilingual;
+  aliases: Bilingual[];
   level: Level;
   source: Bilingual;
   url: string;
@@ -63,7 +64,7 @@ const label = {
     endUserFeature: 'End-user feature',
     finderTitle: 'Find YouTube links by shot and footwork type',
     searchable: 'searchable seed library',
-    searchPlaceholder: 'Search clear, split step, lunge, smash...',
+    searchPlaceholder: 'Search forehand drop, clear, split step, lunge, smash...',
     all: 'All',
     openYoutube: 'Open YouTube search',
     mediatorFeature: 'Mediator feature',
@@ -121,7 +122,7 @@ const label = {
     endUserFeature: '终端用户功能',
     finderTitle: '按击球和步法类型查找 YouTube 链接',
     searchable: '可搜索的种子资源库',
-    searchPlaceholder: '搜索 高远球、启动步、弓步、杀球...',
+    searchPlaceholder: '搜索 正手吊球、高远球、启动步、弓步、杀球...',
     all: '全部',
     openYoutube: '打开 YouTube 搜索',
     mediatorFeature: 'Mediator 功能',
@@ -179,6 +180,10 @@ const videoResources: VideoResource[] = [
     title: { en: 'Forehand Clear: contact point and recovery checklist', zh: '正手高远球：击球点与回位检查清单' },
     category: 'Shot',
     type: { en: 'Forehand clear', zh: '正手高远球' },
+    aliases: [
+      { en: 'forehand high clear', zh: '正手高球' },
+      { en: 'overhead clear', zh: '头顶高远球' },
+    ],
     level: 'Beginner',
     source: { en: 'YouTube curated link', zh: 'YouTube 精选链接' },
     url: 'https://www.youtube.com/results?search_query=badminton+forehand+clear+technique+contact+point',
@@ -195,9 +200,135 @@ const videoResources: VideoResource[] = [
     ],
   },
   {
-    title: { en: 'Drop Shot: fast drop vs slow drop examples', zh: '吊球：快吊与慢吊示例' },
+    title: { en: 'Forehand Drop Shot: fast drop and slow drop basics', zh: '正手吊球：快吊与慢吊基础' },
     category: 'Shot',
-    type: { en: 'Drop shot', zh: '吊球' },
+    type: { en: 'Forehand drop', zh: '正手吊球' },
+    aliases: [
+      { en: 'forehand drop shot', zh: '正手网前吊球' },
+      { en: 'overhead forehand drop', zh: '头顶正手吊球' },
+      { en: 'slow drop', zh: '慢吊' },
+      { en: 'fast drop', zh: '快吊' },
+    ],
+    level: 'Intermediate',
+    source: { en: 'YouTube curated link', zh: 'YouTube 精选链接' },
+    url: 'https://www.youtube.com/results?search_query=badminton+forehand+drop+shot+technique+fast+drop+slow+drop',
+    quality: 'Candidate',
+    reason: {
+      en: 'Added because learners often search for the specific forehand drop variant rather than the generic drop shot topic.',
+      zh: '新增此条是因为学习者经常搜索具体的“正手吊球”，而不是泛泛搜索“吊球”。',
+    },
+    tags: [
+      { en: 'forehand drop', zh: '正手吊球' },
+      { en: 'drop shot', zh: '吊球' },
+      { en: 'fast drop', zh: '快吊' },
+      { en: 'slow drop', zh: '慢吊' },
+      { en: 'overhead', zh: '头顶球' },
+      { en: 'deception', zh: '假动作' },
+    ],
+  },
+  {
+    title: { en: 'Backhand Drop Shot: control and recovery', zh: '反手吊球：控制与回位' },
+    category: 'Shot',
+    type: { en: 'Backhand drop', zh: '反手吊球' },
+    aliases: [
+      { en: 'backhand drop shot', zh: '反手网前吊球' },
+      { en: 'overhead backhand drop', zh: '头顶反手吊球' },
+    ],
+    level: 'Advanced',
+    source: { en: 'YouTube curated link', zh: 'YouTube 精选链接' },
+    url: 'https://www.youtube.com/results?search_query=badminton+backhand+drop+shot+technique+recovery',
+    quality: 'Needs Review',
+    reason: {
+      en: 'Backhand drops need careful source selection because technique quality varies widely.',
+      zh: '反手吊球视频质量差异较大，需要谨慎筛选来源。',
+    },
+    tags: [
+      { en: 'backhand drop', zh: '反手吊球' },
+      { en: 'drop shot', zh: '吊球' },
+      { en: 'control', zh: '控制' },
+      { en: 'recovery', zh: '回位' },
+    ],
+  },
+  {
+    title: { en: 'Net Shot: spinning net and tumbling net basics', zh: '网前球：搓球与滚网基础' },
+    category: 'Shot',
+    type: { en: 'Net shot', zh: '网前球' },
+    aliases: [
+      { en: 'spinning net shot', zh: '搓球' },
+      { en: 'tumbling net shot', zh: '滚网球' },
+      { en: 'net play', zh: '网前技术' },
+    ],
+    level: 'Beginner',
+    source: { en: 'YouTube curated link', zh: 'YouTube 精选链接' },
+    url: 'https://www.youtube.com/results?search_query=badminton+net+shot+spinning+tumbling+technique',
+    quality: 'Candidate',
+    reason: {
+      en: 'Important front-court topic; mediator should pick videos that show racket face and shuttle contact clearly.',
+      zh: '重要的前场主题；mediator 应选择能清楚展示拍面和触球的视频。',
+    },
+    tags: [
+      { en: 'net shot', zh: '网前球' },
+      { en: 'spinning net', zh: '搓球' },
+      { en: 'front court', zh: '前场' },
+      { en: 'touch', zh: '手感' },
+    ],
+  },
+  {
+    title: { en: 'Lift: defensive lift and attacking lift choices', zh: '挑球：防守挑球与进攻挑球选择' },
+    category: 'Shot',
+    type: { en: 'Lift', zh: '挑球' },
+    aliases: [
+      { en: 'defensive lift', zh: '防守挑球' },
+      { en: 'attacking lift', zh: '进攻挑球' },
+      { en: 'clear from net', zh: '网前挑后场' },
+    ],
+    level: 'Beginner',
+    source: { en: 'YouTube curated link', zh: 'YouTube 精选链接' },
+    url: 'https://www.youtube.com/results?search_query=badminton+lift+technique+defensive+attacking+lift',
+    quality: 'Candidate',
+    reason: {
+      en: 'Covers a common response from the net; needs review for both technique and tactical decision-making.',
+      zh: '覆盖网前常见回球；需要同时审核技术动作和战术选择。',
+    },
+    tags: [
+      { en: 'lift', zh: '挑球' },
+      { en: 'defense', zh: '防守' },
+      { en: 'front court', zh: '前场' },
+      { en: 'trajectory', zh: '球路' },
+    ],
+  },
+  {
+    title: { en: 'Drive: flat exchange and grip changes', zh: '平抽挡：平抽对抗与握拍转换' },
+    category: 'Shot',
+    type: { en: 'Drive', zh: '平抽挡' },
+    aliases: [
+      { en: 'flat drive', zh: '平抽' },
+      { en: 'drive defense', zh: '抽挡防守' },
+      { en: 'mid-court drive', zh: '中场平抽' },
+    ],
+    level: 'Intermediate',
+    source: { en: 'YouTube curated link', zh: 'YouTube 精选链接' },
+    url: 'https://www.youtube.com/results?search_query=badminton+drive+technique+flat+exchange+grip+change',
+    quality: 'Needs Review',
+    reason: {
+      en: 'Needs mediator review to avoid videos that are only fast rallies without clear teaching points.',
+      zh: '需要 mediator 避免只展示快速对抽、但缺少教学要点的视频。',
+    },
+    tags: [
+      { en: 'drive', zh: '平抽挡' },
+      { en: 'flat exchange', zh: '平抽对抗' },
+      { en: 'grip change', zh: '握拍转换' },
+      { en: 'doubles', zh: '双打' },
+    ],
+  },
+  {
+    title: { en: 'Drop Shot Overview: fast drop vs slow drop examples', zh: '吊球总览：快吊与慢吊示例' },
+    category: 'Shot',
+    type: { en: 'Drop shot overview', zh: '吊球总览' },
+    aliases: [
+      { en: 'drop shot', zh: '吊球' },
+      { en: 'overhead drop', zh: '头顶吊球' },
+    ],
     level: 'Intermediate',
     source: { en: 'YouTube curated link', zh: 'YouTube 精选链接' },
     url: 'https://www.youtube.com/results?search_query=badminton+drop+shot+fast+drop+slow+drop+technique',
@@ -217,6 +348,11 @@ const videoResources: VideoResource[] = [
     title: { en: 'Smash: body rotation and pronation', zh: '杀球：身体转动与内旋发力' },
     category: 'Shot',
     type: { en: 'Smash', zh: '杀球' },
+    aliases: [
+      { en: 'forehand smash', zh: '正手杀球' },
+      { en: 'jump smash', zh: '跳杀' },
+      { en: 'stick smash', zh: '点杀' },
+    ],
     level: 'Intermediate',
     source: { en: 'YouTube curated link', zh: 'YouTube 精选链接' },
     url: 'https://www.youtube.com/results?search_query=badminton+smash+body+rotation+pronation+technique',
@@ -236,6 +372,10 @@ const videoResources: VideoResource[] = [
     title: { en: 'Backhand clear: when to use and common mistakes', zh: '反手高远球：使用场景与常见错误' },
     category: 'Shot',
     type: { en: 'Backhand clear', zh: '反手高远球' },
+    aliases: [
+      { en: 'backhand high clear', zh: '反手高球' },
+      { en: 'backhand overhead clear', zh: '反手头顶高远球' },
+    ],
     level: 'Advanced',
     source: { en: 'YouTube curated link', zh: 'YouTube 精选链接' },
     url: 'https://www.youtube.com/results?search_query=badminton+backhand+clear+technique+common+mistakes',
@@ -254,6 +394,10 @@ const videoResources: VideoResource[] = [
     title: { en: 'Split step timing against real shots', zh: '面对真实来球的启动步时机' },
     category: 'Footwork',
     type: { en: 'Split step', zh: '启动步' },
+    aliases: [
+      { en: 'ready step', zh: '预启动' },
+      { en: 'preload step', zh: '预动' },
+    ],
     level: 'Beginner',
     source: { en: 'YouTube curated link', zh: 'YouTube 精选链接' },
     url: 'https://www.youtube.com/results?search_query=badminton+split+step+timing+footwork',
@@ -272,6 +416,11 @@ const videoResources: VideoResource[] = [
     title: { en: 'Rear-court scissor kick and recovery', zh: '后场蹬转 / 剪刀步与回位' },
     category: 'Footwork',
     type: { en: 'Scissor kick', zh: '剪刀步' },
+    aliases: [
+      { en: 'rear court scissor', zh: '后场剪刀步' },
+      { en: 'China jump', zh: '蹬转步' },
+      { en: 'scissor jump', zh: '剪刀跳' },
+    ],
     level: 'Intermediate',
     source: { en: 'YouTube curated link', zh: 'YouTube 精选链接' },
     url: 'https://www.youtube.com/results?search_query=badminton+scissor+kick+rear+court+recovery',
@@ -290,6 +439,10 @@ const videoResources: VideoResource[] = [
     title: { en: 'Front-court lunge mechanics', zh: '前场弓步移动机制' },
     category: 'Footwork',
     type: { en: 'Lunge', zh: '弓步' },
+    aliases: [
+      { en: 'front court lunge', zh: '前场弓步' },
+      { en: 'net lunge', zh: '网前弓步' },
+    ],
     level: 'Beginner',
     source: { en: 'YouTube curated link', zh: 'YouTube 精选链接' },
     url: 'https://www.youtube.com/results?search_query=badminton+front+court+lunge+mechanics+footwork',
@@ -305,9 +458,60 @@ const videoResources: VideoResource[] = [
     ],
   },
   {
+    title: { en: 'Chasse Step: side movement and recovery rhythm', zh: '并步 / 追步：横向移动与回位节奏' },
+    category: 'Footwork',
+    type: { en: 'Chasse step', zh: '并步' },
+    aliases: [
+      { en: 'side chasse', zh: '横向并步' },
+      { en: 'shuffle step', zh: '滑步' },
+      { en: 'side step', zh: '侧向移动' },
+    ],
+    level: 'Beginner',
+    source: { en: 'YouTube curated link', zh: 'YouTube 精选链接' },
+    url: 'https://www.youtube.com/results?search_query=badminton+chasse+step+side+movement+footwork',
+    quality: 'Candidate',
+    reason: {
+      en: 'A core connector step between split step, lunge, and recovery patterns.',
+      zh: '连接启动步、弓步和回位模式的核心衔接步法。',
+    },
+    tags: [
+      { en: 'chasse step', zh: '并步' },
+      { en: 'shuffle', zh: '滑步' },
+      { en: 'side movement', zh: '侧向移动' },
+      { en: 'recovery', zh: '回位' },
+    ],
+  },
+  {
+    title: { en: 'Cross Step: rear-court and diagonal movement', zh: '交叉步：后场与斜线移动' },
+    category: 'Footwork',
+    type: { en: 'Cross step', zh: '交叉步' },
+    aliases: [
+      { en: 'crossover step', zh: '交叉移动' },
+      { en: 'rear court cross step', zh: '后场交叉步' },
+    ],
+    level: 'Intermediate',
+    source: { en: 'YouTube curated link', zh: 'YouTube 精选链接' },
+    url: 'https://www.youtube.com/results?search_query=badminton+cross+step+crossover+footwork+rear+court',
+    quality: 'Candidate',
+    reason: {
+      en: 'Useful for longer court coverage; mediator should prefer videos explaining when not to cross step.',
+      zh: '适合覆盖较长距离；mediator 应优先选择说明何时不该交叉步的视频。',
+    },
+    tags: [
+      { en: 'cross step', zh: '交叉步' },
+      { en: 'crossover', zh: '交叉移动' },
+      { en: 'rear court', zh: '后场' },
+      { en: 'diagonal movement', zh: '斜线移动' },
+    ],
+  },
+  {
     title: { en: 'Doubles serve return patterns', zh: '双打接发球套路' },
     category: 'Tactics',
     type: { en: 'Serve return', zh: '接发球' },
+    aliases: [
+      { en: 'return of serve', zh: '接发' },
+      { en: 'serve return tactics', zh: '接发球战术' },
+    ],
     level: 'Intermediate',
     source: { en: 'YouTube curated link', zh: 'YouTube 精选链接' },
     url: 'https://www.youtube.com/results?search_query=badminton+doubles+serve+return+patterns',
@@ -364,6 +568,40 @@ function text(value: Bilingual, lang: Lang) {
   return value[lang];
 }
 
+function normalizeSearchText(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[·/／,，:：;；()（）\[\]{}"“”'’‘-]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function tokenizeSearchQuery(value: string) {
+  return normalizeSearchText(value)
+    .split(' ')
+    .map((token) => token.trim())
+    .filter(Boolean);
+}
+
+function buildResourceSearchText(resource: VideoResource) {
+  return normalizeSearchText([
+    resource.title.en,
+    resource.title.zh,
+    resource.type.en,
+    resource.type.zh,
+    ...resource.aliases.flatMap((alias) => [alias.en, alias.zh]),
+    resource.category,
+    categoryLabel[resource.category].zh,
+    resource.level,
+    levelLabel[resource.level].zh,
+    resource.quality,
+    qualityLabel[resource.quality].zh,
+    resource.reason.en,
+    resource.reason.zh,
+    ...resource.tags.flatMap((tag) => [tag.en, tag.zh]),
+  ].join(' '));
+}
+
 function App() {
   const [lang, setLang] = useState<Lang>('en');
   const [category, setCategory] = useState<'All' | Category>('All');
@@ -372,24 +610,12 @@ function App() {
   const t = label[lang];
 
   const filteredResources = useMemo(() => {
-    const normalized = query.trim().toLowerCase();
+    const tokens = tokenizeSearchQuery(query);
     return videoResources.filter((resource) => {
       const matchesCategory = category === 'All' || resource.category === category;
       const matchesQuality = quality === 'All' || resource.quality === quality;
-      const haystack = [
-        resource.title.en,
-        resource.title.zh,
-        resource.type.en,
-        resource.type.zh,
-        resource.level,
-        levelLabel[resource.level].zh,
-        resource.reason.en,
-        resource.reason.zh,
-        ...resource.tags.flatMap((tag) => [tag.en, tag.zh]),
-      ]
-        .join(' ')
-        .toLowerCase();
-      const matchesQuery = normalized.length === 0 || haystack.includes(normalized);
+      const searchText = buildResourceSearchText(resource);
+      const matchesQuery = tokens.length === 0 || tokens.every((token) => searchText.includes(token));
       return matchesCategory && matchesQuality && matchesQuery;
     });
   }, [category, quality, query]);

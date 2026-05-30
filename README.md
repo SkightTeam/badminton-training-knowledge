@@ -28,6 +28,16 @@ Current bilingual fields include:
 
 Long-term content should move from inline TypeScript seed data to structured files with explicit `en` and `zh` fields.
 
+## Current content coverage
+
+The site currently contains a seed taxonomy, not a complete badminton knowledge base. The seed library now covers the most common starter areas:
+
+- Shots: forehand clear, forehand drop, backhand drop, drop shot overview, smash, backhand clear, net shot, lift, drive
+- Footwork: split step, scissor kick, lunge, chasse step, cross step
+- Tactics: doubles serve return
+
+Search supports English and Chinese aliases, so terms such as `Forehand drop`, `drop shot`, `正手吊球`, `快吊`, and `慢吊` can match the relevant seed card.
+
 ## Initial features
 
 - Bilingual UI toggle
