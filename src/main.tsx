@@ -1,136 +1,214 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import { ArrowRight, BookOpen, CalendarDays, Dumbbell, GraduationCap, HeartPulse, PlayCircle, Search, ShieldCheck, Target, UserRound } from 'lucide-react';
+import {
+  ArrowRight,
+  BadgeCheck,
+  BookOpen,
+  BrainCircuit,
+  ExternalLink,
+  Filter,
+  Footprints,
+  Gauge,
+  Search,
+  ShieldCheck,
+  Sparkles,
+  Target,
+  Video,
+} from 'lucide-react';
 import './styles.css';
 
-type TrainingModule = {
+type Category = 'Shot' | 'Footwork' | 'Tactics' | 'Fitness';
+type Level = 'Beginner' | 'Intermediate' | 'Advanced';
+type Quality = 'Approved' | 'Candidate' | 'Needs Review';
+
+type VideoResource = {
   title: string;
-  level: 'Beginner' | 'Intermediate' | 'Advanced';
-  duration: string;
-  description: string;
-  skills: string[];
+  category: Category;
+  type: string;
+  level: Level;
+  source: string;
+  url: string;
+  quality: Quality;
+  reason: string;
+  tags: string[];
 };
 
-const modules: TrainingModule[] = [
+const videoResources: VideoResource[] = [
   {
-    title: 'Footwork Foundations',
+    title: 'Forehand Clear: contact point and recovery checklist',
+    category: 'Shot',
+    type: 'Forehand clear',
     level: 'Beginner',
-    duration: '4 weeks',
-    description: 'Build efficient movement patterns for front court, mid court, rear court, recovery, and split-step timing.',
-    skills: ['Split step', 'Chasse', 'Lunge mechanics', 'Base recovery'],
+    source: 'YouTube curated link',
+    url: 'https://www.youtube.com/results?search_query=badminton+forehand+clear+technique+contact+point',
+    quality: 'Approved',
+    reason: 'Good starter query for fundamentals: grip, preparation, contact height, follow-through, and recovery.',
+    tags: ['clear', 'overhead', 'contact point', 'recovery'],
   },
   {
-    title: 'Overhead Stroke System',
+    title: 'Drop Shot: fast drop vs slow drop examples',
+    category: 'Shot',
+    type: 'Drop shot',
     level: 'Intermediate',
-    duration: '6 weeks',
-    description: 'Progress from clear and drop consistency into smash preparation, deception, contact height, and tactical shot choice.',
-    skills: ['Clear', 'Drop', 'Smash', 'Late hold'],
+    source: 'YouTube curated link',
+    url: 'https://www.youtube.com/results?search_query=badminton+drop+shot+fast+drop+slow+drop+technique',
+    quality: 'Candidate',
+    reason: 'Needs mediator review to select videos with clear camera angle and tactical explanation.',
+    tags: ['drop', 'deception', 'overhead', 'tempo'],
   },
   {
-    title: 'Net Control and Front Court',
+    title: 'Smash: body rotation and pronation',
+    category: 'Shot',
+    type: 'Smash',
     level: 'Intermediate',
-    duration: '4 weeks',
-    description: 'Train tight net shots, spinning net, lift quality, interception habits, and pressure from the forecourt.',
-    skills: ['Net spin', 'Tumbling net', 'Lift', 'Kill timing'],
+    source: 'YouTube curated link',
+    url: 'https://www.youtube.com/results?search_query=badminton+smash+body+rotation+pronation+technique',
+    quality: 'Approved',
+    reason: 'Search phrase targets mechanics instead of only highlight clips.',
+    tags: ['smash', 'pronation', 'power', 'rotation'],
   },
   {
-    title: 'Singles Tactical Patterns',
+    title: 'Backhand clear: when to use and common mistakes',
+    category: 'Shot',
+    type: 'Backhand clear',
     level: 'Advanced',
-    duration: '8 weeks',
-    description: 'Learn rally construction, pressure zones, variation, tempo changes, and opponent-specific pattern selection.',
-    skills: ['Rally plans', 'Tempo', 'Corners', 'Pattern breaks'],
+    source: 'YouTube curated link',
+    url: 'https://www.youtube.com/results?search_query=badminton+backhand+clear+technique+common+mistakes',
+    quality: 'Needs Review',
+    reason: 'Many videos overpromise quick fixes; mediator should choose technically conservative examples.',
+    tags: ['backhand', 'clear', 'common mistakes'],
   },
   {
-    title: 'Doubles Rotation and Roles',
-    level: 'Advanced',
-    duration: '8 weeks',
-    description: 'Develop front-back attack, side-side defense, serve-return systems, rotation triggers, and communication rules.',
-    skills: ['Serve return', 'Rotation', 'Defense', 'Third shot'],
-  },
-  {
-    title: 'Solo Practice and Tracking',
+    title: 'Split step timing against real shots',
+    category: 'Footwork',
+    type: 'Split step',
     level: 'Beginner',
-    duration: 'Reusable',
-    description: 'Create repeatable self-practice routines with clear goals, measurable reps, recovery notes, and weekly progress checks.',
-    skills: ['Self-assessment', 'Repetition goals', 'Consistency logs', 'Recovery habits'],
+    source: 'YouTube curated link',
+    url: 'https://www.youtube.com/results?search_query=badminton+split+step+timing+footwork',
+    quality: 'Approved',
+    reason: 'Core movement concept; prioritize videos that show timing relative to opponent contact.',
+    tags: ['split step', 'timing', 'movement'],
+  },
+  {
+    title: 'Rear-court scissor kick and recovery',
+    category: 'Footwork',
+    type: 'Scissor kick',
+    level: 'Intermediate',
+    source: 'YouTube curated link',
+    url: 'https://www.youtube.com/results?search_query=badminton+scissor+kick+rear+court+recovery',
+    quality: 'Candidate',
+    reason: 'Mediator should compare demonstrations for balance, hip rotation, and landing recovery.',
+    tags: ['scissor kick', 'rear court', 'recovery'],
+  },
+  {
+    title: 'Front-court lunge mechanics',
+    category: 'Footwork',
+    type: 'Lunge',
+    level: 'Beginner',
+    source: 'YouTube curated link',
+    url: 'https://www.youtube.com/results?search_query=badminton+front+court+lunge+mechanics+footwork',
+    quality: 'Approved',
+    reason: 'Useful for safety and efficiency; focus on knee alignment, heel-to-toe landing, and push-back.',
+    tags: ['lunge', 'front court', 'injury prevention'],
+  },
+  {
+    title: 'Doubles serve return patterns',
+    category: 'Tactics',
+    type: 'Serve return',
+    level: 'Intermediate',
+    source: 'YouTube curated link',
+    url: 'https://www.youtube.com/results?search_query=badminton+doubles+serve+return+patterns',
+    quality: 'Candidate',
+    reason: 'Needs quality selection because tactical terminology varies widely by creator.',
+    tags: ['doubles', 'serve return', 'third shot'],
   },
 ];
 
-const knowledgeAreas = [
-  {
-    icon: Target,
-    title: 'Technique Library',
-    copy: 'Stroke mechanics, grips, body positions, contact points, common errors, and self-correction cues.',
-  },
-  {
-    icon: Dumbbell,
-    title: 'Physical Preparation',
-    copy: 'Mobility, strength, speed, plyometrics, injury prevention, and return-to-play progressions.',
-  },
-  {
-    icon: GraduationCap,
-    title: 'Tactics and Game Models',
-    copy: 'Singles and doubles patterns, serve-return systems, pressure building, and match analysis templates.',
-  },
-  {
-    icon: HeartPulse,
-    title: 'Training Load and Recovery',
-    copy: 'Weekly planning, fatigue signals, recovery routines, and tournament preparation guidelines.',
-  },
-];
+const categories: Array<'All' | Category> = ['All', 'Shot', 'Footwork', 'Tactics', 'Fitness'];
+const qualityLabels: Array<'All' | Quality> = ['All', 'Approved', 'Candidate', 'Needs Review'];
 
-const sampleLessons = [
-  'How to time the split step against different opponents',
-  'Rear-court scissor kick: when to rotate and when to block jump',
-  'Solo and partner drills for doubles serve-return practice',
-  'Video self-analysis checklist for overhead preparation',
-  'Beginner 12-week progression from rallying to first tournament',
+const mediatorQueue = [
+  {
+    query: 'badminton forehand clear beginner full court angle',
+    suggestedBy: 'AI search',
+    status: 'Ready to compare',
+    criteria: ['clear camera angle', 'safe technique', 'beginner friendly'],
+  },
+  {
+    query: 'badminton split step timing opponent contact slow motion',
+    suggestedBy: 'AI search',
+    status: 'Needs source check',
+    criteria: ['timing explanation', 'match examples', 'concise teaching'],
+  },
+  {
+    query: 'badminton scissor kick recovery common mistakes',
+    suggestedBy: 'Manual seed + AI expansion',
+    status: 'Needs final pick',
+    criteria: ['balance', 'landing safety', 'recovery step'],
+  },
 ];
 
 function App() {
+  const [category, setCategory] = useState<'All' | Category>('All');
+  const [quality, setQuality] = useState<'All' | Quality>('All');
+  const [query, setQuery] = useState('');
+
+  const filteredResources = useMemo(() => {
+    const normalized = query.trim().toLowerCase();
+    return videoResources.filter((resource) => {
+      const matchesCategory = category === 'All' || resource.category === category;
+      const matchesQuality = quality === 'All' || resource.quality === quality;
+      const haystack = [resource.title, resource.type, resource.level, resource.reason, ...resource.tags]
+        .join(' ')
+        .toLowerCase();
+      const matchesQuery = normalized.length === 0 || haystack.includes(normalized);
+      return matchesCategory && matchesQuality && matchesQuery;
+    });
+  }, [category, quality, query]);
+
   return (
     <main>
       <section className="hero">
         <nav className="nav" aria-label="Main navigation">
           <div className="brand">
             <span className="brandMark">BTK</span>
-            <span>Badminton Training Knowledge</span>
+            <span>Badminton Knowledge Base</span>
           </div>
           <div className="navLinks">
-            <a href="#modules">Modules</a>
-            <a href="#knowledge">Knowledge</a>
-            <a href="#roadmap">Roadmap</a>
+            <a href="#finder">Video Finder</a>
+            <a href="#mediator">Mediator</a>
+            <a href="#model">Content Model</a>
           </div>
         </nav>
 
         <div className="heroGrid">
           <div className="heroCopy">
-            <p className="eyebrow">Training material · skill library · player knowledge base</p>
-            <h1>Build a structured badminton learning website for players.</h1>
+            <p className="eyebrow">Curated YouTube links · shot library · footwork knowledge</p>
+            <h1>A badminton knowledge base for finding the right learning video faster.</h1>
             <p className="lead">
-              A clean starting point for organizing badminton technique, footwork, tactics,
-              physical preparation, self-practice routines, and video-analysis resources.
+              The site is not a training portal. It is a searchable, mediator-curated reference
+              for badminton shots, footwork types, tactics, and quality learning resources.
             </p>
             <div className="heroActions">
-              <a className="primaryButton" href="#modules">
-                Explore modules <ArrowRight size={18} />
+              <a className="primaryButton" href="#finder">
+                Find videos <ArrowRight size={18} />
               </a>
-              <a className="secondaryButton" href="#roadmap">
-                View content roadmap
+              <a className="secondaryButton" href="#mediator">
+                Review curation workflow
               </a>
             </div>
           </div>
 
-          <aside className="heroCard" aria-label="Website pillars">
+          <aside className="heroCard" aria-label="Knowledge base status">
             <div className="courtDiagram">
-              <span>Front court</span>
-              <span>Mid court</span>
-              <span>Rear court</span>
+              <span>Shots</span>
+              <span>Footwork</span>
+              <span>Tactics</span>
             </div>
             <div className="heroStats">
-              <div><strong>6</strong><span>starter modules</span></div>
-              <div><strong>4</strong><span>knowledge pillars</span></div>
-              <div><strong>12w</strong><span>beginner path target</span></div>
+              <div><strong>{videoResources.length}</strong><span>seed links</span></div>
+              <div><strong>4</strong><span>content areas</span></div>
+              <div><strong>AI</strong><span>search assisted</span></div>
             </div>
           </aside>
         </div>
@@ -138,98 +216,163 @@ function App() {
 
       <section className="section intro">
         <div>
-          <p className="sectionLabel">Project concept</p>
-          <h2>From scattered drills to a searchable player training system.</h2>
+          <p className="sectionLabel">Direction</p>
+          <h2>Knowledge base first, not training portal.</h2>
         </div>
         <p>
-          This project is intentionally separate from the agent-workbench repository. It is a
-          public-facing knowledge website concept for badminton players, with room to grow into
-          bilingual articles, drill cards, self-practice plans, video notes, and structured learning paths.
+          The core job is helping a badminton learner quickly discover high-quality video resources
+          by shot type, footwork type, level, and topic. The site should store links, quality notes,
+          tags, and mediator decisions rather than manage training plans or coaching workflows.
         </p>
       </section>
 
-      <section className="section" id="modules">
+      <section className="section finder" id="finder">
         <div className="sectionHeader">
           <div>
-            <p className="sectionLabel">Training modules</p>
-            <h2>Starter curriculum map</h2>
+            <p className="sectionLabel">End-user feature</p>
+            <h2>Find YouTube links by shot and footwork type</h2>
           </div>
-          <div className="searchBox"><Search size={18} /> searchable later</div>
+          <div className="searchBox"><Search size={18} /> searchable seed library</div>
         </div>
-        <div className="moduleGrid">
-          {modules.map((module) => (
-            <article className="moduleCard" key={module.title}>
+
+        <div className="filters" aria-label="Video filters">
+          <label>
+            <Search size={18} />
+            <input
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Search clear, split step, lunge, smash..."
+            />
+          </label>
+          <label>
+            <Filter size={18} />
+            <select value={category} onChange={(event) => setCategory(event.target.value as 'All' | Category)}>
+              {categories.map((item) => <option key={item}>{item}</option>)}
+            </select>
+          </label>
+          <label>
+            <BadgeCheck size={18} />
+            <select value={quality} onChange={(event) => setQuality(event.target.value as 'All' | Quality)}>
+              {qualityLabels.map((item) => <option key={item}>{item}</option>)}
+            </select>
+          </label>
+        </div>
+
+        <div className="resourceGrid">
+          {filteredResources.map((resource) => (
+            <article className="resourceCard" key={`${resource.type}-${resource.title}`}>
               <div className="cardTop">
-                <span className={`level ${module.level.toLowerCase()}`}>{module.level}</span>
-                <span className="duration"><CalendarDays size={14} /> {module.duration}</span>
+                <span className={`level ${resource.level.toLowerCase()}`}>{resource.level}</span>
+                <span className={`quality ${resource.quality.toLowerCase().replace(' ', '-')}`}>{resource.quality}</span>
               </div>
-              <h3>{module.title}</h3>
-              <p>{module.description}</p>
+              <div className="resourceType">
+                {resource.category === 'Footwork' ? <Footprints size={18} /> : <Target size={18} />}
+                {resource.category} · {resource.type}
+              </div>
+              <h3>{resource.title}</h3>
+              <p>{resource.reason}</p>
               <ul>
-                {module.skills.map((skill) => <li key={skill}>{skill}</li>)}
+                {resource.tags.map((tag) => <li key={tag}>{tag}</li>)}
               </ul>
+              <a className="videoLink" href={resource.url} target="_blank" rel="noreferrer">
+                Open YouTube search <ExternalLink size={16} />
+              </a>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="section knowledge" id="knowledge">
+      <section className="section mediator" id="mediator">
+        <div className="sectionHeader">
+          <div>
+            <p className="sectionLabel">Mediator feature</p>
+            <h2>Choose the best content from AI search results</h2>
+          </div>
+        </div>
+
+        <div className="mediatorLayout">
+          <article className="workflowCard">
+            <BrainCircuit size={30} />
+            <h3>AI-assisted curation loop</h3>
+            <ol>
+              <li>Seed a topic such as “split step timing” or “forehand clear”.</li>
+              <li>AI search expands candidates and extracts title, channel, summary, and reason.</li>
+              <li>Mediator compares candidates using quality criteria.</li>
+              <li>Best links are approved, tagged, and published to the knowledge base.</li>
+            </ol>
+          </article>
+
+          <div className="queueList">
+            {mediatorQueue.map((item) => (
+              <article className="queueItem" key={item.query}>
+                <div>
+                  <p className="queueMeta"><Sparkles size={16} /> {item.suggestedBy} · {item.status}</p>
+                  <h3>{item.query}</h3>
+                </div>
+                <ul>
+                  {item.criteria.map((criterion) => <li key={criterion}>{criterion}</li>)}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section knowledge" id="model">
         <div className="sectionHeader">
           <div>
             <p className="sectionLabel">Knowledge architecture</p>
-            <h2>Four pillars for the content library</h2>
+            <h2>Initial content model</h2>
           </div>
         </div>
         <div className="pillarGrid">
-          {knowledgeAreas.map((area) => {
-            const Icon = area.icon;
-            return (
-              <article className="pillarCard" key={area.title}>
-                <Icon size={28} />
-                <h3>{area.title}</h3>
-                <p>{area.copy}</p>
-              </article>
-            );
-          })}
+          <article className="pillarCard">
+            <Video size={28} />
+            <h3>Video Resource</h3>
+            <p>URL, title, channel, topic type, level, tags, language, duration, and quality status.</p>
+          </article>
+          <article className="pillarCard">
+            <Target size={28} />
+            <h3>Technique Topic</h3>
+            <p>Shot or footwork type, common terms, related topics, and what a good video should show.</p>
+          </article>
+          <article className="pillarCard">
+            <Gauge size={28} />
+            <h3>Quality Rubric</h3>
+            <p>Camera clarity, technical accuracy, safety, level fit, explanation quality, and practical examples.</p>
+          </article>
+          <article className="pillarCard">
+            <ShieldCheck size={28} />
+            <h3>Mediator Decision</h3>
+            <p>Approved, candidate, rejected, replacement reason, review notes, and publication timestamp.</p>
+          </article>
         </div>
       </section>
 
       <section className="section roadmap" id="roadmap">
         <div className="roadmapText">
-          <p className="sectionLabel">Next content to write</p>
-          <h2>Turn the site into a practical badminton reference.</h2>
+          <p className="sectionLabel">Next build steps</p>
+          <h2>Move from seed links to a curated knowledge base.</h2>
           <p>
-            The first milestone should create evergreen training pages and a repeatable lesson format:
-            goal, prerequisites, self-check cues, drill setup, progressions, common errors, and video notes.
+            The initial version uses static seed data. The next milestone should add structured content files,
+            richer topic pages, and an offline mediator workflow for importing AI search candidates.
           </p>
         </div>
         <div className="lessonList">
-          {sampleLessons.map((lesson, index) => (
-            <div className="lessonItem" key={lesson}>
+          {[
+            'Create topic taxonomy: shots, footwork, tactics, physical preparation',
+            'Store video links in JSON or Markdown frontmatter',
+            'Add mediator review fields: approved, rejected, reason, quality score',
+            'Add Chinese and English labels for every topic',
+            'Automate AI search result import into a candidate queue',
+          ].map((item, index) => (
+            <div className="lessonItem" key={item}>
               <span>{String(index + 1).padStart(2, '0')}</span>
-              <p>{lesson}</p>
-              <PlayCircle size={20} />
+              <p>{item}</p>
+              <BookOpen size={20} />
             </div>
           ))}
         </div>
-      </section>
-
-      <section className="section trust">
-        <article>
-          <BookOpen size={26} />
-          <h3>Content-first</h3>
-          <p>Designed around reusable lessons, drills, glossary entries, and structured pathways.</p>
-        </article>
-        <article>
-          <UserRound size={26} />
-          <h3>Player-first</h3>
-          <p>Built for self-study, personal training plans, match reflection, and steady skill progression.</p>
-        </article>
-        <article>
-          <ShieldCheck size={26} />
-          <h3>Evidence-aware</h3>
-          <p>Can later include citations, video examples, player notes, and versioned updates.</p>
-        </article>
       </section>
     </main>
   );

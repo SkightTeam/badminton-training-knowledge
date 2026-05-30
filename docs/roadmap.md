@@ -1,41 +1,42 @@
 # Roadmap
 
-## Phase 1: Static foundation
+## Phase 1: Static public knowledge base
 
 - Landing page
-- Starter training module cards
-- Content architecture document
-- Build and deploy pipeline
+- Searchable seed video library
+- Filters by category and quality status
+- Initial mediator workflow mockup
+- GitHub Pages deployment
 
-## Phase 2: Content system
+## Phase 2: Structured content
 
-- Lesson pages
-- Drill cards
-- Training plan templates
-- Glossary
-- Search and filters
-- Tags by level, skill, court area, and game type
+- Move video resources to JSON or Markdown frontmatter
+- Add topic taxonomy for shots, footwork, tactics, and fitness
+- Add direct YouTube video URLs after mediator approval
+- Add bilingual topic labels
+- Add quality rubric pages
 
-## Phase 3: Player tools
+## Phase 3: Mediator workflow
 
-- Personal session planner
-- Printable drill cards
-- Weekly training plan template
-- Self-assessment checklists
-- Video self-analysis note pages
+- AI search candidate import format
+- Candidate comparison view
+- Approve/reject/defer decisions
+- Duplicate detection
+- Quality score and review notes
+- Publication status tracking
 
-## Phase 4: Media and learning resources
+## Phase 4: Search and discovery
 
-- Embedded video examples
-- Player notes
-- Downloadable PDFs
-- Skill progression packs
-- Contribution guide
+- Full-text search
+- Filter by shot type, footwork type, level, language, and quality status
+- Related topic graph
+- Recommended alternatives
+- Recently reviewed content
 
-## Phase 5: Advanced platform
+## Phase 5: Optional backend
 
-- User accounts
-- Saved learning paths
-- Progress tracking
-- Quiz/checkpoint system
-- Personal training dashboard
+- Admin login for mediators
+- Database-backed candidate queue
+- AI search integration
+- Versioned review history
+- Automated link health checks

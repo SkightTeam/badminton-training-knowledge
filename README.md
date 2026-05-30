@@ -1,36 +1,36 @@
-# Badminton Training Knowledge
+# Badminton Training Knowledge Base
 
-A badminton training material and knowledge website for badminton players.
+A badminton knowledge base for finding and curating high-quality YouTube learning resources.
 
-This project is independent from the Vertical Agent Workbench project. It is a content-first website scaffold for organizing badminton technique, footwork, tactics, physical preparation, self-practice plans, and video-analysis resources.
+This project is independent from the Vertical Agent Workbench project. It is not a training portal. It is a content and link knowledge base focused on badminton shots, footwork, tactics, and reliable video references.
 
-## Goals
+## Product direction
 
-- Build a structured badminton training knowledge base
-- Provide clear learning paths for beginner, intermediate, and advanced players
-- Support self-study with reusable training plans and drill progressions
-- Create a foundation for bilingual content, video notes, and searchable lessons
+The website has two primary user stories:
 
-## Initial content structure
+1. End user: I want to easily find YouTube video links according to different shot types, footwork types, tactics, level, and tags.
+2. Mediator: I want to add, compare, approve, or reject high-quality content based on AI search results and a clear quality rubric.
 
-- Training modules
-  - Footwork foundations
-  - Overhead stroke system
-  - Net control and front court
-  - Singles tactical patterns
-  - Doubles rotation and roles
-  - Solo practice and tracking
-- Knowledge pillars
-  - Technique library
-  - Physical preparation
-  - Tactics and game models
-  - Training load and recovery
-- Sample content roadmap
-  - Split-step timing
-  - Rear-court scissor kick
-  - Doubles serve-return practice
-  - Video self-analysis checklist
-  - Beginner 12-week progression
+## Initial features
+
+- Searchable seed library of YouTube search links
+- Filters by category and quality status
+- Shot and footwork topic cards
+- Curated quality states: Approved, Candidate, Needs Review
+- Mediator workflow mockup for AI-assisted content selection
+- Initial content model for video resources, topics, quality rubric, and mediator decisions
+
+## Content model direction
+
+Core objects:
+
+- Video Resource
+- Technique Topic
+- Quality Rubric
+- Mediator Decision
+- AI Search Candidate
+
+The long-term repository should store content as structured JSON or Markdown frontmatter so links can be reviewed, versioned, and published without changing app code.
 
 ## Tech stack
 
@@ -58,14 +58,18 @@ Preview production build:
 npm run preview
 ```
 
+## GitHub Pages
+
+This repo is configured to publish the static site with GitHub Pages from GitHub Actions.
+
 ## Recommended next milestones
 
-1. Add a content model for lessons, drills, glossary, and training plans.
-2. Add bilingual English/Chinese article pages.
-3. Add search/filter for modules and lessons.
-4. Add drill cards with goal, setup, cues, progressions, regressions, and common errors.
-5. Add video self-analysis note templates.
-6. Add deployment workflow for GitHub Pages, Cloudflare Pages, or Vercel.
+1. Move video seed data from `src/main.tsx` into `content/videos.json`.
+2. Add a proper topic taxonomy for shots, footwork, tactics, and fitness.
+3. Add bilingual English/Chinese topic labels.
+4. Add mediator review fields: approved, rejected, reason, quality score, reviewed date.
+5. Add AI search import format for candidate queues.
+6. Replace YouTube search URLs with selected direct video URLs after mediator approval.
 
 ## License
 

@@ -26,6 +26,12 @@ a {
   text-decoration: none;
 }
 
+button,
+input,
+select {
+  font: inherit;
+}
+
 main {
   overflow: hidden;
 }
@@ -97,8 +103,8 @@ main {
 .hero h1 {
   margin: 0;
   max-width: 820px;
-  font-size: clamp(3.2rem, 7vw, 6.9rem);
-  line-height: 0.94;
+  font-size: clamp(3rem, 6.2vw, 6.4rem);
+  line-height: 0.96;
   letter-spacing: -0.08em;
 }
 
@@ -244,22 +250,54 @@ main {
   font-weight: 700;
 }
 
-.moduleGrid {
+.filters {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 220px 220px;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.filters label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 54px;
+  padding: 0 16px;
+  border: 1px solid #dfe8da;
+  border-radius: 18px;
+  background: white;
+  color: #60736d;
+  box-shadow: 0 14px 38px rgba(14, 55, 44, 0.06);
+}
+
+.filters input,
+.filters select {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  color: #10201d;
+  background: transparent;
+}
+
+.resourceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 18px;
 }
 
-.moduleCard,
+.resourceCard,
 .pillarCard,
-.trust article {
+.workflowCard,
+.queueItem {
   border: 1px solid #dfe8da;
   border-radius: 26px;
   background: white;
   box-shadow: 0 24px 60px rgba(14, 55, 44, 0.08);
 }
 
-.moduleCard {
+.resourceCard {
+  display: flex;
+  flex-direction: column;
   padding: 22px;
 }
 
@@ -271,7 +309,8 @@ main {
   margin-bottom: 18px;
 }
 
-.level {
+.level,
+.quality {
   padding: 7px 10px;
   border-radius: 999px;
   background: #edf8e8;
@@ -280,37 +319,46 @@ main {
   font-size: 0.75rem;
 }
 
-.level.advanced {
+.level.advanced,
+.quality.candidate {
   background: #ecf3ff;
   color: #2455a6;
 }
 
-
-.duration {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  color: #71827d;
-  font-size: 0.84rem;
-  font-weight: 700;
+.quality.needs-review {
+  background: #fff4df;
+  color: #9b5a00;
 }
 
-.moduleCard h3,
+.resourceType,
+.queueMeta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #1d8d65;
+  font-weight: 850;
+  font-size: 0.92rem;
+}
+
+.resourceCard h3,
 .pillarCard h3,
-.trust h3 {
-  margin: 0;
+.workflowCard h3,
+.queueItem h3 {
+  margin: 10px 0 0;
   color: #10201d;
   font-size: 1.25rem;
   letter-spacing: -0.03em;
 }
 
-.moduleCard p,
+.resourceCard p,
 .pillarCard p,
-.trust p {
+.workflowCard li,
+.queueItem li {
   font-size: 0.98rem;
 }
 
-.moduleCard ul {
+.resourceCard ul,
+.queueItem ul {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -319,13 +367,67 @@ main {
   list-style: none;
 }
 
-.moduleCard li {
+.resourceCard li,
+.queueItem li {
   padding: 7px 10px;
   border-radius: 999px;
   color: #486059;
   background: #f3f7f1;
   font-size: 0.84rem;
   font-weight: 700;
+}
+
+.videoLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  margin-top: auto;
+  padding: 12px 15px;
+  border-radius: 999px;
+  color: white;
+  background: #133d32;
+  font-weight: 850;
+}
+
+.mediator {
+  padding-top: 38px;
+}
+
+.mediatorLayout {
+  display: grid;
+  grid-template-columns: 0.78fr 1.22fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.workflowCard {
+  padding: 24px;
+}
+
+.workflowCard svg,
+.pillarCard svg {
+  color: #1d8d65;
+  margin-bottom: 16px;
+}
+
+.workflowCard ol {
+  padding-left: 22px;
+  color: #50625d;
+  line-height: 1.75;
+}
+
+.queueList {
+  display: grid;
+  gap: 14px;
+}
+
+.queueItem {
+  padding: 20px;
+}
+
+.queueMeta {
+  margin: 0;
 }
 
 .knowledge {
@@ -340,12 +442,6 @@ main {
 
 .pillarCard {
   padding: 24px;
-}
-
-.pillarCard svg,
-.trust svg {
-  color: #1d8d65;
-  margin-bottom: 16px;
 }
 
 .roadmap {
@@ -388,28 +484,21 @@ main {
   color: #88a09a;
 }
 
-.trust {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  padding-top: 34px;
-}
-
-.trust article {
-  padding: 24px;
-}
-
 @media (max-width: 960px) {
   .heroGrid,
   .intro,
-  .roadmap {
+  .roadmap,
+  .mediatorLayout {
     grid-template-columns: 1fr;
   }
 
-  .moduleGrid,
-  .pillarGrid,
-  .trust {
+  .pillarGrid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .filters,
+  .resourceGrid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -432,9 +521,7 @@ main {
     margin-top: 64px;
   }
 
-  .moduleGrid,
   .pillarGrid,
-  .trust,
   .heroStats {
     grid-template-columns: 1fr;
   }

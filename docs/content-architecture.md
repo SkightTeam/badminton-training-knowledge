@@ -1,103 +1,108 @@
 # Content Architecture
 
-The website should become a practical badminton learning system for players, not just a blog.
+The website should become a practical badminton knowledge base for discovering and curating high-quality learning videos.
+
+It is not a training portal. It does not manage player schedules, workouts, progress, or coaching workflows.
 
 ## Core content types
 
-### Lesson
+### Video Resource
 
-A focused learning unit.
+A reviewed or candidate YouTube resource.
+
+Fields:
+
+- title
+- url
+- source platform
+- channel name
+- language
+- duration
+- category: shot, footwork, tactics, fitness
+- topic type: clear, smash, split step, lunge, etc.
+- level: beginner, intermediate, advanced
+- tags
+- quality status: approved, candidate, needs review, rejected
+- quality score
+- mediator notes
+- last reviewed date
+
+### Technique Topic
+
+A searchable badminton concept.
 
 Fields:
 
 - title
 - slug
-- level
 - category
-- learning goal
-- prerequisites
-- explanation
-- self-check cues
-- common errors
-- correction drills
-- video notes
-- related lessons
+- aliases
+- description
+- related topics
+- common search queries
+- what a good video should show
+- common misleading signs
 
-### Drill
+### AI Search Candidate
 
-A repeatable training exercise.
+A candidate found by AI-assisted search.
 
 Fields:
 
-- title
-- objective
-- court setup
-- player count
-- feed type
-- work/rest timing
-- success criteria
-- progressions
-- regressions
-- safety notes
+- search query
+- candidate title
+- candidate URL
+- channel
+- extracted summary
+- AI reason for inclusion
+- risk flags
+- suggested tags
+- duplicate match
+- mediator decision
 
-### Training Plan
+### Quality Rubric
 
-A session or multi-week progression for individual players or practice partners.
-
-Fields:
-
-- title
-- target player level
-- session duration
-- warm-up
-- skill block
-- tactical block
-- conditioned game
-- physical block
-- cool-down
-- homework
-
-### Glossary Entry
-
-A short reference definition.
+A rubric for choosing the best video.
 
 Fields:
 
-- term
-- definition
-- examples
-- related terms
+- technical accuracy
+- camera angle clarity
+- safety
+- level fit
+- explanation quality
+- practical examples
+- match-context relevance
+- production clarity
 
-### Video Analysis Note
+### Mediator Decision
 
-A structured observation page for match or training videos.
+A human review record.
 
 Fields:
 
-- video source
-- player level
-- scenario
-- timestamps
-- observations
-- technical notes
-- tactical notes
-- recommended drills
+- reviewer
+- decision: approve, reject, replace, defer
+- reason
+- preferred alternative URL
+- notes
+- timestamp
 
 ## Proposed top-level navigation
 
-- Learn
-- Drills
-- Training Plans
+- Find Videos
+- Shots
+- Footwork
 - Tactics
 - Fitness
-- Glossary
-- Video Notes
+- Mediator Queue
+- Quality Rubric
 
 ## Bilingual direction
 
 Recommended convention:
 
-- English: `slug.md`
-- Chinese: `slug.zh.md`
+- English: `slug.md` or topic label
+- Chinese: `slug.zh.md` or topic label
 
-Keep media assets language-neutral where possible.
+Keep media assets and YouTube URLs language-neutral where possible, but allow per-language recommendations when the best videos differ.
